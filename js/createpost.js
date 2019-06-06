@@ -1,11 +1,11 @@
 $(document).ready(function(){
-    $('#createblogpost').click(function(event){
+
+    $( "#createblog" ).click(function( event ) {
         event.preventDefault();         
-        var postTitle = $("#nameofarticle").val()
-        var postSubtitle = $("#subheading").val()
-        var postBody = $("#blogpost").val()
-        var dateOfpost =$("#dateofpost").val()
-        let blogData = {postTitle,postSubtitle,dateOfpost,postBody}
+        var posttitle = $("#nameofarticle").val()
+        var postsubtitle = $("#subheading").val()
+        var postbody = $("#blogpost").val()
+        let blogdata = {posttitle,postsubtitle,postbody}
         if (posttitle && postsubtitle && postbody){
             $.ajax({
                 method: "POST",
@@ -33,6 +33,8 @@ $(document).ready(function(){
             })
         }
 
-
     })
-})  
+          
+  
+});
+
