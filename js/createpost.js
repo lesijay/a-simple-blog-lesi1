@@ -19,7 +19,18 @@ $(document).ready(function(){
                     alert(error);
                 }
               })
-              
+              $.ajax({
+                method: "GET",
+                url: "http://localhost:3000/blogposts",
+                // dataType: "json",
+                data: blogdata,
+                success: function(response) {
+                    alert('data gotten');
+                },
+                error: function(error){
+                    alert(error);
+                }
+            })
         }
 
 
