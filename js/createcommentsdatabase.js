@@ -6,7 +6,7 @@ $(document).ready(function(){
         let comment = $("#usercomment").val()
         let blogpostid =window.location.search.substring(1)
         let commentdata ={blogpostid,username,comment}
-        if (usercomment && username){
+        if (comment && username){
             $.ajax({
                 method: "POST",
                 url: "http://localhost:3000/comments",
