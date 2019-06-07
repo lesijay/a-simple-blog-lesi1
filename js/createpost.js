@@ -5,7 +5,8 @@ $(document).ready(function(){
         var posttitle = $("#nameofarticle").val()
         var postsubtitle = $("#subheading").val()
         var postbody = $("#blogpost").val()
-        let blogdata = {posttitle,postsubtitle,postbody}
+        var date = $("#dateofpost").val()
+        let blogdata = {posttitle,postsubtitle,date,postbody}
         if (posttitle && postsubtitle && postbody){
             $.ajax({
                 method: "POST",
