@@ -1,5 +1,6 @@
+let myData = [];
 $(document).ready(function(){
-
+    // Gets the blog data from the admin dashboard and posts to JSON server
     $( "#createblog" ).click(function( event ) {
         event.preventDefault();         
         var posttitle = $("#nameofarticle").val()
@@ -36,7 +37,7 @@ $(document).ready(function(){
 
     })
     
-    
+    //Displays post preview on the homepage
     $.ajax({
         method:'GET',
         dataType:'json',
@@ -55,11 +56,13 @@ $(document).ready(function(){
           })
    })
 
+    //Displays each post on the admin postlisting area
    $.ajax({
     method:'GET',
     dataType:'json',
     url: 'http://localhost:3000/blogposts'
   }).done(function(data){
+      myData = data;
       $.map(data, function(blogs,i){
         $('#createpostlisting').append(`
         <div class="post-preview">
@@ -71,13 +74,34 @@ $(document).ready(function(){
              </h4>
              <p class="post-meta">Posted on ${blogs.date} </p>
         </div>
-        <button type="submit" class="btn btn-primary" id="editblogpost" >Edit</button>
-        <button type="submit" class="btn btn-primary" id="deleteblogpost" >Delete</button>
+        <button type="submit" class="btn btn-primary" id="editpost${blogs.id}" >Edit</button>
+        <button type="submit" class="btn btn-primary" id="${blogs.id}" >Delete</button>
         <hr>`);
 
     })
+    deleteBlockPost()
 })
 
+
+    //Deletes post
+    function deleteBlockPost(){
+        myData.forEach((item, i) => {
+            let id = i + 1;
+            $( `#${id}` ).click(function( event ) {
+                // let blogpostid =window.location.search.substring(1);
+                 $.ajax({
+                     method: "DELETE",
+                     url: `http://localhost:3000/blogposts/${id}`,
+                     dataType: "json",
+                     }).done(data => console.log(data))
+                 // console.log('you clikc me ', id)
+                     
+             })
+
+        })
+        
+    }
+    
 
 
 

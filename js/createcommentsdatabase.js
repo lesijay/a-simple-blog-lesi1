@@ -12,9 +12,14 @@ $(document).ready(function(){
                 url: "http://localhost:3000/comments",
                 // dataType: "json",
                 data:commentdata,
-                /*success: function(response) {
-                    alert('database updated');
-                },
+                success: function(response) {
+                    //empty the formfields after submit
+                    $("#nameofuser").val('');
+                    $("#usercomment").val('')
+                    $("#showcomment").append(response);
+
+                }
+                /*
                 error: function(error){
                     alert(error);
                 }*/
