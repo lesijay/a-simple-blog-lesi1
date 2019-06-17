@@ -1,18 +1,18 @@
 let myData = [];
-$(document).ready(function(){
-    // Gets the blog data from the admin dashboard and posts to JSON server
-    $( "#createblog" ).click(function( event ) {
+function createBlog(){
+     // Gets the blog data from the admin dashboard and posts to JSON server
+     $( "#createblog" ).click(function( event ) {
         event.preventDefault();         
         var posttitle = $("#nameofarticle").val()
         var postsubtitle = $("#subheading").val()
         var postbody = $("#blogpost").val()
         var date = $("#dateofpost").val()
-        let blogdata = {posttitle,postsubtitle,date,postbody}
+        let blogdata = JSON.stringify({posttitle,postsubtitle,date,postbody})
         if (posttitle && postsubtitle && postbody){
             $.ajax({
                 method: "POST",
                 url: "http://localhost:3000/blogposts",
-                // dataType: "json",
+                dataType: "json",
                 data: blogdata,
                 success: function(response) {
                     alert('database updated');
@@ -36,6 +36,8 @@ $(document).ready(function(){
         }
 
     })
+}
+$(document).ready(function(){   
     
     //Displays post preview on the homepage
     $.ajax({
@@ -79,30 +81,31 @@ $(document).ready(function(){
         <hr>`);
 
     })
-    deleteBlockPost()
+    deleteBlockPost();
+    createBlog();
 })
 
 
     //Deletes post
     function deleteBlockPost(){
+       // console.log(myData)
         myData.forEach((item, i) => {
-            let id = i + 1;
-            $( `#${id}` ).click(function( event ) {
+            // let id = i + 1;
+            // console.log(item.id)
+            $( `#${item.id}` ).click(function( event ) {
                 // let blogpostid =window.location.search.substring(1);
                  $.ajax({
                      method: "DELETE",
-                     url: `http://localhost:3000/blogposts/${id}`,
+                     url: `http://localhost:3000/blogposts/${item.id}`,
                      dataType: "json",
-                     }).done(data => console.log(data))
-                 // console.log('you clikc me ', id)
+                     }).done(data => alert('data deleted', data))
+                 // console.log('you clikc me ', item.id)
                      
              })
 
         })
         
     }
-    
-
 
 
 });
