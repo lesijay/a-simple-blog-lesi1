@@ -44,7 +44,7 @@ $(document).ready(function(){
       }).done(function(data){
              $.map(data, function(blogs,i){
                 if(blogpostid===blogs.blogpostid){
-                    $('#showcomment').append(`<p>${blogs.username} : ${blogs.comment}</p>`);
+                    $('#showcomment').append(`<p style="font-style:italic; font-size:0.8em">${blogs.username}:<br> ${blogs.comment}</p><hr>`);
                 }
              })
     
