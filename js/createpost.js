@@ -35,7 +35,51 @@ $(document).ready(function(){
         }
 
     })
-          
-  
+    
+    
+    $.ajax({
+        method:'GET',
+        dataType:'json',
+        url: 'http://localhost:3000/blogposts'
+      }).done(function(data){
+          $.map(data, function(blogs,i){
+            $('#postpreview').append(`<a href="post.html?${blogs.id}">
+            <h2 class="post-title">
+              ${blogs.posttitle}
+            </h2>
+            <h3 class="post-subtitle">
+              ${blogs.postsubtitle}
+            </h3>
+          </a>
+          <p class="post-meta">Posted on ${blogs.date}</p>`);
+          })
+   })
+
+   $.ajax({
+    method:'GET',
+    dataType:'json',
+    url: 'http://localhost:3000/blogposts'
+  }).done(function(data){
+      $.map(data, function(blogs,i){
+        $('#createpostlisting').append(`
+        <div class="post-preview">
+             <h3 class="post-title">
+                 ${blogs.posttitle}
+            </h3>
+            <h4 class="post-subtitle">
+                 ${blogs.postsubtitle}
+             </h4>
+             <p class="post-meta">Posted on ${blogs.date} </p>
+        </div>
+        <button type="submit" class="btn btn-primary" id="editblogpost" >Edit</button>
+        <button type="submit" class="btn btn-primary" id="deleteblogpost" >Delete</button>
+        <hr>`);
+
+    })
+})
+
+
+
+
 });
 
