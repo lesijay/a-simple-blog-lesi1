@@ -7,7 +7,7 @@ function createBlog(){
         var postsubtitle = $("#subheading").val()
         var postbody = $("#blogpost").val()
         var date = $("#dateofpost").val()
-        let blogdata = JSON.stringify({posttitle,postsubtitle,date,postbody})
+        let blogdata ={posttitle,postsubtitle,date,postbody};
         if (posttitle && postsubtitle && postbody){
             $.ajax({
                 method: "POST",
@@ -42,7 +42,7 @@ $(document).ready(function(){
     //Displays post preview on the homepage
     $.ajax({
         method:'GET',
-        dataType:'json',
+        //dataType:'json',
         url: 'http://localhost:3000/blogposts'
       }).done(function(data){
           $.map(data, function(blogs,i){
