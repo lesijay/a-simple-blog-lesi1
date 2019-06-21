@@ -27,6 +27,11 @@ function createBlog(){
                 // dataType: "json",
                 data: blogdata,
                 success: function(response) {
+                    $("#nameofarticle").val('');
+                    $("#subheading").val('');
+                    $("#blogpost").val('');
+                    $("dateofpost").val('');
+
                     alert('data gotten');
                 },
                 error: function(error){
