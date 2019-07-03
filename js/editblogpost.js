@@ -1,15 +1,14 @@
 $(document).ready(function(){
     var displayEditablePost =window.location.search.substring(1);
     //let postsubtitle = $(".articleName").val('input.nameof')
-    console.log(displayEditablePost);
     $.ajax({
         method:'GET',
         dataType:'json',
         url: 'http://localhost:3000/blogposts/'+displayEditablePost
         }).done(function(data){
-            alert('hey')
-           console.log(`${data.posttitle}`)
-           console.log(`${data.postsubtitle}`)
+            //alert('hey')
+           //console.log(`${data.posttitle}`)
+           //console.log(`${data.postsubtitle}`)
            
      //$("#name").val(`${data.posttitle}`)
            //$("#name").val(`${data.posttitle}`)
