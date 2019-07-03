@@ -32,7 +32,7 @@ function createBlog(){
                     $("#blogpost").val('');
                     $("dateofpost").val('');
 
-                    alert('data gotten');
+                    //alert('data gotten');
                 },
                 error: function(error){
                     alert(error);

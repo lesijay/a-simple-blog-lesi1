@@ -15,7 +15,7 @@ $(document).ready(function(){
             $('#updateblogposts').append(`<form>
             <div class="form-group">
                   <labelfor="nameofarticle">Name of Article</label>
-                  <input type="text" class="form-control articleName"  value="${data.posttitle}" id="name" required>
+                  <input type="text" class="form-control articleName"  value="${data.posttitle}" id="nameofarticle" required>
             </div>
             <div class="form-group">
                   <label for="subheeading">Sub Heading</label>
@@ -29,12 +29,34 @@ $(document).ready(function(){
                   <label for="blogpost">Write your blog post</label>
                   <textarea class="form-control" id="blogpost" rows="10" required>${data.postbody}</textarea>
             </div>
-              <button type="button" class="btn btn-primary" id="updateblog" >Update blog Post</button>
-              <button type="button" class="btn btn-primary" id="cancelblog" >Cancel</button>
-              <button type="button" class="btn btn-primary" id="saveblog" >Save</button>
+              
         </form>
         `)
 
     })
+
+    $( '#updateblogpost').click(function( event ) {
+      //event.preventDefault();
+      //alert("done");
+      var posttitle = $("#nameofarticle").val()
+        var postsubtitle = $("#subheading").val()
+        var postbody = $("#blogpost").val()
+        var date = $("#dateofpost").val()
+        let blogdata ={posttitle,postsubtitle,date,postbody};
+      $.ajax({
+       method:'PUT',
+       dataType:'json',
+       url: 'http://localhost:3000/blogposts/'+displayEditablePost,
+       data: blogdata,
+       success: function(response) {
+            alert('database updated');
+       },
+       error: function(error){
+            alert(error);
+       }
+       })
+
+})
+
 
 })
