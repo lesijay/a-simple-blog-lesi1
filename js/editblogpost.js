@@ -50,6 +50,11 @@ $(document).ready(function(){
        data: blogdata,
        success: function(response) {
             alert('database updated');
+            $("#nameofarticle").val('');
+            $("#subheading").val('');
+            $("#blogpost").val('');
+            $("dateofpost").val('');
+
        },
        error: function(error){
             alert(error);
