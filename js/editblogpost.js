@@ -36,7 +36,7 @@ $(document).ready(function(){
     })
 
     $( '#updateblogpost').click(function( event ) {
-      //event.preventDefault();
+      event.preventDefault();
       //alert("done");
       var posttitle = $("#nameofarticle").val()
         var postsubtitle = $("#subheading").val()
@@ -61,7 +61,17 @@ $(document).ready(function(){
        }
        })
 
+
 })
 
+      /*$( '#cancelblogpost').click(function( event ) {
+            event.preventDefault();
+            alert('edit cancelled');
+            $("#nameofarticle").val('');
+            $("#subheading").val('');
+            $("#blogpost").val('');
+            $("dateofpost").val('');
 
+
+      })*/
 })
