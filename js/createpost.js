@@ -81,14 +81,13 @@ $(document).ready(function(){
              </h4>
              <p class="post-meta">Posted on ${blogs.date} </p>
         </div>
-        <button type="submit" class="btn btn-primary" id="edit${blogs.id}" >Edit</button>
+        <a href="adminupdatepostdashboard.html?${blogs.id}" type="submit" class="btn btn-primary" id="edit${blogs.id}" >Edit</a>
         <button type="submit" class="btn btn-primary" id="delete${blogs.id}" >Delete</button>
         <hr>`);
 
     })
     deleteBlogPost();
     createBlog();
-    editBlogPost();
 })
 
 
@@ -113,26 +112,8 @@ $(document).ready(function(){
         
     }
 
-    //Edit blogpost
-    function editBlogPost(){
-        // console.log(myData)
-         myData.forEach((item, i) => {
-             // let id = i + 1;
-             // console.log(item.id)
-             $( `#edit${item.id}` ).click(function( event ) {
-                 // let blogpostid =window.location.search.substring(1);
-                  $.ajax({
-                      method: "PUT",
-                      url: `http://localhost:3000/blogposts/${item.id}`,
-                      dataType: "json",
-                      }).done(data => alert('data edited', data))
-                   console.log('you clikc me ', item.id)
-                      
-              })
- 
-         })
-         
-     }
+    
+
 
 
 });

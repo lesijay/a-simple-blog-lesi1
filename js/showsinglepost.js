@@ -5,6 +5,7 @@ $(document).ready(function(){
         dataType:'json',
         url: 'http://localhost:3000/blogposts/'+displaysinglepost
         }).done(function(data){
+          console.log(`${data.posttitle}`)
             $('#displaysinglepost').append(`<header class="masthead" style="background-image: url('img/post-bg.jpg')">
             <div class="overlay"></div>
             <div class="container">
