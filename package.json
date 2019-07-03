@@ -1,0 +1,23 @@
+{
+  "name": "a-simple-blog-lesi1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "json-server --watch db.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lesijay/a-simple-blog-lesi1.git"
+  },
+  "author": "Lesi Sampson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lesijay/a-simple-blog-lesi1/issues"
+  },
+  "homepage": "https://github.com/lesijay/a-simple-blog-lesi1#readme",
+  "dependencies": {
+    "json-server": "^0.15.0"
+  }
+}
